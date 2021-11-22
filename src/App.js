@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Routes, Route, NavLink} from "react-router-dom"
 import {Box, Container} from '@mui/material'
 import ProdutoPage from "./components/Pages/ProdutoPage";
 import EnderecoPage from "./components/Pages/EnderecoPage";
+import UsuarioPage from "./components/Pages/UsuarioPage";
 
 export default class App extends React.Component{
   render(){
@@ -12,7 +13,7 @@ export default class App extends React.Component{
         <Routes>
           <Route path="/produtos" element={<ProdutoPage></ProdutoPage>}></Route>
           <Route path="/enderecos" element={<EnderecoPage></EnderecoPage>}></Route>
-          <Route path="/produtos" element={<ProdutoPage></ProdutoPage>}></Route>
+          <Route path="/usuarios" element={<UsuarioPage></UsuarioPage>}></Route>
           <Route path="/" element={<>
             <nav>
               <ol>
