@@ -21,13 +21,14 @@ export default class ProdutoForm extends React.Component{
     }
 
     handleSubmit = (event) => {
-        event.preventDefaut()
+        event.preventDefault()
         let produto = {
             nome: this.state.nome,
             valor: this.state.valor,
             descricao: this.state.descricao,
             codigo: this.state.codigo
         }
+        console.log(produto)
         this.props.action(produto)
     }
     

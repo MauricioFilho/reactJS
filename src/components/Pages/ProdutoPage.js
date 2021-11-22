@@ -1,7 +1,7 @@
 import React from 'react'
 import Axios from 'axios'
-import ProdutoList from '../Produtos/ProdutoList'
-import ProdutoForm from '../Produtos/ProdutoForm'
+import ProdutoList from '../Lists/ProdutoList'
+import ProdutoForm from '../Forms/ProdutoForm'
 import {Snackbar} from "@mui/material"
 
 export default class ProdutoPage extends React.Component{
@@ -34,17 +34,23 @@ export default class ProdutoPage extends React.Component{
     }
 
     inserirProduto = async (produto) => {
-        console.log(produto)
-        let response = await Axios.post(this.API_URL, produto)
-        
-        if(response.status === 200) {
-            await this.updateProdutoList()
-        }  
+        console.log(`Deletando o id ${produto}`)
+        try{
+            let response = await Axios.post(this.API_URL, produto)
+            if(response.status === 200) {
+                await this.updateUserList()
+            }
+
+            this.setState({
+                errorMessage: null
+            })
+        } catch (err){
+            this.openSnackbar(err.message)
+        }
     }
 
-    deleteProduto = async (id) => {
-        console.log(`Deletando o id ${id}`)
 
+    deleteProduto = async (id) => {
         try{
             let response = await Axios.delete(`${this.API_URL}/${id}`)
             if(response.status === 200) {
@@ -97,7 +103,7 @@ export default class ProdutoPage extends React.Component{
         return <>
             <section>
                 <h2>Inserir Produto</h2>
-                <ProdutoForm action={this.insertProduto}></ProdutoForm>
+                <ProdutoForm action={this.inserirProduto}></ProdutoForm>
             </section>
             <section>
                 <h2>Listagem de Produtos</h2>

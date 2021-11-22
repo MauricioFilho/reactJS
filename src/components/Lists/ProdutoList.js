@@ -1,5 +1,5 @@
 import React from "react";
-import ProdutosItem from "./ProdutosItem";
+import ProdutosItem from "../Items/ProdutosItem";
 import {Table, TableRow, TableHead, TableBody, TableCell} from '@mui/material'
 
 export default class ProdutoList extends React.Component{

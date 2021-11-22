@@ -1,5 +1,5 @@
 import React from "react";
-import ProdutoForm from "./ProdutoForm";
+import ProdutoForm from "../Forms/ProdutoForm";
 import {TableRow, TableCell, Button} from '@mui/material'
 
 export default class ProdutosItem extends React.Component{
