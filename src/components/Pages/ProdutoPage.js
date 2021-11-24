@@ -23,10 +23,12 @@ export default class ProdutoPage extends React.Component{
 
     updateProdutoList = async () => {
         let produtoList = await this.getAllProdutos()
+            
         this.setState({
             produtoList
         })
     }
+    
 
     getAllProdutos = async () => {
         let response = await Axios.get(this.API_URL)
@@ -34,11 +36,10 @@ export default class ProdutoPage extends React.Component{
     }
 
     inserirProduto = async (produto) => {
-        console.log(`Deletando o id ${produto}`)
         try{
             let response = await Axios.post(this.API_URL, produto)
             if(response.status === 200) {
-                await this.updateUserList()
+                await this.updateProdutoList()
             }
 
             this.setState({
@@ -54,7 +55,7 @@ export default class ProdutoPage extends React.Component{
         try{
             let response = await Axios.delete(`${this.API_URL}/${id}`)
             if(response.status === 200) {
-                await this.updateProdutoList()
+               await this.updateProdutoList()
             }
             this.setState({
                 errorMessage: null
@@ -67,8 +68,6 @@ export default class ProdutoPage extends React.Component{
     }
 
     putProduto = async (id, produto) => {
-        console.log(`Atualizando o id ${id} com o corpo ${JSON.stringify(produto)}`)
-
         try{
             let response = await Axios.put(`${this.API_URL}/${id}`, produto)
             if(response.status === 200) {

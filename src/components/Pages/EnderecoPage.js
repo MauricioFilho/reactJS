@@ -34,7 +34,6 @@ export default class EnderecoPage extends React.Component{
     }
 
     inserirEndereco = async (endereco) => {
-        console.log(`Inserindo o objeto ${endereco}`)
         try{
             let response = await Axios.post(this.API_URL, endereco)
             if(response.status === 200) {
@@ -67,8 +66,6 @@ export default class EnderecoPage extends React.Component{
     }
 
     putEndereco = async (id, endereco) => {
-        console.log(`Atualizando o id ${id} com o corpo ${JSON.stringify(endereco)}`)
-
         try{
             let response = await Axios.put(`${this.API_URL}/${id}`, endereco)
             if(response.status === 200) {

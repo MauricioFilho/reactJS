@@ -28,7 +28,6 @@ export default class ProdutoForm extends React.Component{
             descricao: this.state.descricao,
             codigo: this.state.codigo
         }
-        console.log(produto)
         this.props.action(produto)
     }
     

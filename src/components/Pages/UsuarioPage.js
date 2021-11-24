@@ -34,7 +34,6 @@ export default class UsuarioPage extends React.Component{
     }
 
     inserirUsuario = async (usuario) => {
-        console.log(`Deletando o id ${usuario}`)
         try{
             let response = await Axios.post(this.API_URL, usuario)
             if(response.status === 200) {
@@ -55,7 +54,7 @@ export default class UsuarioPage extends React.Component{
             let response = await Axios.delete(`${this.API_URL}/${id}`)
             if(response.status === 200) {
                 await this.updateUsuarioList()
-            }
+            } 
             this.setState({
                 errorMessage: null
             })
@@ -67,11 +66,8 @@ export default class UsuarioPage extends React.Component{
     }
 
     putUsuario = async (id, usuario) => {
-        console.log(`Atualizando o id ${id} com o corpo ${JSON.stringify(usuario)}`)
-
         try{
             let response = await Axios.put(`${this.API_URL}/${id}`, usuario)
-            response.headers("Access-Control-Allow-Origin", "*")
             if(response.status === 200) {
                 await this.updateUsuarioList()
             }
